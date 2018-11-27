@@ -1,0 +1,28 @@
+server:
+  port: 8001
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis�����ļ�����·��
+  type-aliases-package: com.luo.springcloud.entities        # ����Entity���������ڰ�
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml                       # mapperӳ���ļ�
+
+spring:
+   application:
+    name: microservicecloud-dept 
+   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # ��ǰ����Դ��������
+    driver-class-name: org.gjt.mm.mysql.Driver              # mysql������
+    url: jdbc:mysql://localhost:3306/cloudDB01              # ���ݿ�����
+    username: root
+    password: 1234
+    dbcp2:
+      min-idle: 5                                           # ���ݿ����ӳص���Сά��������
+      initial-size: 5                                       # ��ʼ��������
+      max-total: 5                                          # ���������
+      max-wait-millis: 200                                  # �ȴ����ӻ�ȡ�����ʱʱ��
+
+eureka:
+  client: #�ͻ���ע���eureka�����б���
+    service-url: 
+      defaultZone: http://localhost:7001/eureka

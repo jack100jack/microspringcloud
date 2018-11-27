@@ -1,0 +1,39 @@
+server:
+  port: 8001
+  
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis閰嶇疆鏂囦欢鎵�鍦ㄨ矾寰�
+  type-aliases-package: com.atguigu.springcloud.entities    # 鎵�鏈塃ntity鍒悕绫绘墍鍦ㄥ寘
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml                       # mapper鏄犲皠鏂囦欢
+    
+spring:
+   application:
+    name: microservicecloud-dept 
+   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 褰撳墠鏁版嵁婧愭搷浣滅被鍨�
+    driver-class-name: org.gjt.mm.mysql.Driver              # mysql椹卞姩鍖�
+    url: jdbc:mysql://localhost:3306/cloudDB01              # 鏁版嵁搴撳悕绉�
+    username: root
+    password: admin
+    dbcp2:
+      min-idle: 5                                           # 鏁版嵁搴撹繛鎺ユ睜鐨勬渶灏忕淮鎸佽繛鎺ユ暟
+      initial-size: 5                                       # 鍒濆鍖栬繛鎺ユ暟
+      max-total: 5                                          # 鏈�澶ц繛鎺ユ暟
+      max-wait-millis: 200                                  # 绛夊緟杩炴帴鑾峰彇鐨勬渶澶ц秴鏃舵椂闂�
+      
+eureka:
+  client: #瀹㈡埛绔敞鍐岃繘eureka鏈嶅姟鍒楄〃鍐�
+    service-url: 
+      defaultZone: http://localhost:7001/eureka
+      # defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/      
+  instance:
+    instance-id: microservicecloud-dept8001
+    prefer-ip-address: true     #璁块棶璺緞鍙互鏄剧ずIP鍦板潃     
+ 
+info: 
+  app.name: atguigu-microservicecloud
+  company.name: www.atguigu.com
+  build.artifactId: microservicecloud-provider-dept-8001
+  build.version: 0.0.1-SNAPSHOT
+
